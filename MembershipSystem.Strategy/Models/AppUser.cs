@@ -1,4 +1,4 @@
-﻿namespace MembershipSystem.Models
+﻿namespace MembershipSystem.Strategy.Models
 {
     public class AppUser : IdentityUser
     {

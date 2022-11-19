@@ -1,0 +1,16 @@
+﻿global using MembershipSystem.Strategy;
+global using MembershipSystem.Strategy.Models;
+global using MembershipSystem.Strategy.Repositories;
+global using Microsoft.AspNetCore.Authentication;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using MongoDB.Bson;
+global using MongoDB.Bson.Serialization.Attributes;
+global using MongoDB.Driver;
+global using NuGet.Configuration;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Security.Claims;
