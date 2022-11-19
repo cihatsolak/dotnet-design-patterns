@@ -10,7 +10,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
     options.User.RequireUniqueEmail = true;
 }).AddEntityFrameworkStores<AppIdentityDbContext>();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 SeedData.AddSeedData(builder);
 
