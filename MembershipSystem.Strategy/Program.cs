@@ -1,3 +1,5 @@
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -11,6 +13,26 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<AppIdentityDbContext>();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<IProductRepository>(sp =>
+{
+    var httpContextAccessor = sp.GetRequiredService<IHttpContextAccessor>();
+    var context = sp.GetRequiredService<AppIdentityDbContext>();
+
+    var claim = httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == Setting.ClaimDatabaseType);
+    if (claim is null) 
+        return new ProductRepositoryFromSqlServer(context);
+
+    var databaseType = (EDatabaseType)int.Parse(claim.Value);
+    return databaseType switch
+    {
+        EDatabaseType.SqlServer => new ProductRepositoryFromSqlServer(context),
+        EDatabaseType.MongoDb => new ProductRepositoryFromMongoDb(builder.Configuration),
+        _ => throw new NotImplementedException()
+    };
+});
 
 SeedData.AddSeedData(builder);
 
