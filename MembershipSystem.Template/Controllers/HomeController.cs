@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace MembershipSystem.Template.Controllers
+﻿namespace MembershipSystem.Template.Controllers
 {
     public class HomeController : Controller
     {
