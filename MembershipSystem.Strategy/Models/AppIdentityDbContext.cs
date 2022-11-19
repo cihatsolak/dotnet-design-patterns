@@ -1,13 +1,11 @@
-﻿namespace MembershipSystem.Models
+﻿namespace MembershipSystem.Strategy.Models
 {
-    public class AppIdentityDbContext : IdentityDbContext<AppUser, AppRole, int>
+    public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        public AppIdentityDbContext(DbContextOptions options): base(options)
+        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
         }
 
-        public AppIdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options)
-        {
-        }
+        public DbSet<Product> Products { get; set; }
     }
 }

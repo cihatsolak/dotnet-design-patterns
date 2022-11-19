@@ -1,6 +1,10 @@
-﻿global using MembershipSystem;
-global using MembershipSystem.Models;
+﻿global using MembershipSystem.Strategy;
+global using MembershipSystem.Strategy.Models;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using MongoDB.Bson;
+global using MongoDB.Bson.Serialization.Attributes;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;

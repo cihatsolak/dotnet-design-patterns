@@ -1,4 +1,4 @@
-﻿namespace MembershipSystem
+﻿namespace MembershipSystem.Strategy
 {
     public static class SeedData
     {

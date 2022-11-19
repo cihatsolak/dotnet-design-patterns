@@ -1,4 +1,4 @@
-﻿namespace MembershipSystem.Controllers
+﻿namespace MembershipSystem.Strategy.Controllers
 {
     public class AccountController : Controller
     {
@@ -6,7 +6,7 @@
         private readonly SignInManager<AppUser> _signInManager;
 
         public AccountController(
-            UserManager<AppUser> userManager, 
+            UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;

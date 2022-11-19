@@ -1,6 +1,6 @@
-﻿namespace MembershipSystem.Models
+﻿namespace MembershipSystem.Strategy.Models
 {
-    public class AppUser : IdentityUser<int>
+    public class AppUser : IdentityUser
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace MembershipSystem.Controllers
+namespace MembershipSystem.Strategy.Controllers
 {
     public class HomeController : Controller
     {
