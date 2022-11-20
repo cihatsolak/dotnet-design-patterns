@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Strategy",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Template", "MembershipSystem.Template\MembershipSystem.Template.csproj", "{95A9F23D-5E09-4E6A-8C57-723FE66942E6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Command", "MembershipSystem.Command\MembershipSystem.Command.csproj", "{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{95A9F23D-5E09-4E6A-8C57-723FE66942E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A9F23D-5E09-4E6A-8C57-723FE66942E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95A9F23D-5E09-4E6A-8C57-723FE66942E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
