@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Template",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Command", "MembershipSystem.Command\MembershipSystem.Command.csproj", "{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Observer", "MembershipSystem.Observer\MembershipSystem.Observer.csproj", "{C1D3CF9C-09EC-4CEC-827B-F6431928708D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{039B9E7D-F3C0-4144-A1A2-0CA75F7C4531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D3CF9C-09EC-4CEC-827B-F6431928708D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D3CF9C-09EC-4CEC-827B-F6431928708D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D3CF9C-09EC-4CEC-827B-F6431928708D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D3CF9C-09EC-4CEC-827B-F6431928708D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
