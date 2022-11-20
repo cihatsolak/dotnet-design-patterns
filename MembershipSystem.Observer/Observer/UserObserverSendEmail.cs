@@ -14,9 +14,7 @@
             var logger = _serviceProvider.GetRequiredService<ILogger<UserObserverSendEmail>>();
 
             var mailMessage = new MailMessage();
-
             var smptClient = new SmtpClient("srvm11.trwww.com");
-
             mailMessage.From = new MailAddress("deneme@kariyersistem.com");
 
             mailMessage.To.Add(new MailAddress(appUser.Email));

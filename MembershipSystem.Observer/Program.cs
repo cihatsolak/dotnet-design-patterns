@@ -1,5 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<IUserObserverSubject>(sp =>
+{
+    UserObserverSubject userObserverSubject = new();
+
+    userObserverSubject.RegisterObserver(new UserObserverWriteToConsole(sp));
+    userObserverSubject.RegisterObserver(new UserObserverCreateDiscount(sp));
+    userObserverSubject.RegisterObserver(new UserObserverSendEmail(sp));
+
+    return userObserverSubject;
+});
+
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
