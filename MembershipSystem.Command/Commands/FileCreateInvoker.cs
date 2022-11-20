@@ -3,7 +3,7 @@
     public class FileCreateInvoker
     {
         private ITableActionCommand _tableActionCommand;
-        private List<ITableActionCommand> TableActionCommands = new();
+        private readonly List<ITableActionCommand> TableActionCommands = new();
 
         public void SetCommand(ITableActionCommand tableActionCommand)
         {

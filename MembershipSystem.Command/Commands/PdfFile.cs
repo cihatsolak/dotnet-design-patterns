@@ -54,7 +54,7 @@ namespace MembershipSystem.Command.Commands
             });
 
             stringBuilder.Append("</table></body></html");
-
+            var cihat = stringBuilder.ToString();
             var doc = new HtmlToPdfDocument()
             {
                 GlobalSettings = {
