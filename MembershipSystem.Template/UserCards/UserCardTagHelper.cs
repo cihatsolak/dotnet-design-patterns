@@ -2,15 +2,14 @@
 {
     public class UserCardTagHelper : TagHelper
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly UserManager<AppUser> _userManager;
+        public AppUser AppUser { get; set; }
 
-        public UserCardTagHelper(
-            IHttpContextAccessor httpContextAccessor, 
-            UserManager<AppUser> userManager)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+       
+
+        public UserCardTagHelper(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-            _userManager = userManager;
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
@@ -26,9 +25,7 @@
                 userCardTemplate = new DefaultUserCardTemplate();
             }
 
-            var user = _userManager.FindByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name).Result;
-
-            userCardTemplate.SetUser(user);
+            userCardTemplate.SetUser(AppUser);
 
             output.Content.SetHtmlContent(userCardTemplate.Build());
         }
