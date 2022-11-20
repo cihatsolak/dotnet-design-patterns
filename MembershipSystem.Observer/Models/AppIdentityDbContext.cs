@@ -8,6 +8,7 @@ namespace MembershipSystem.Observer.Models
         {
         }
 
+        public DbSet<Discount> Discounts { get; set; }
         public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
         {
             public AppIdentityDbContext CreateDbContext(string[] args)
