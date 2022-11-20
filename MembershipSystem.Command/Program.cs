@@ -1,3 +1,6 @@
+using DinkToPdf;
+using DinkToPdf.Contracts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -11,6 +14,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<AppIdentityDbContext>();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 SeedData.AddSeedData(builder);
 
