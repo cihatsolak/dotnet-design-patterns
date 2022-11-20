@@ -2,7 +2,7 @@
 {
     public static class SeedData
     {
-        public static void AddSeedData(this WebApplicationBuilder builder)
+        public static async void AddSeedData(this WebApplicationBuilder builder)
         {
             var serviceProvider = builder.Services.BuildServiceProvider();
             var identityDbContext = serviceProvider.GetRequiredService<AppIdentityDbContext>();
@@ -41,6 +41,13 @@
                     UserName = "user5",
                     Email = "user5@hotmail.com",
                 }, "Password12*").Wait();
+
+                Enumerable.Range(1, 30).ToList().ForEach(x =>
+                {
+                    identityDbContext.Products.Add(new Product() { Name = $"kalem {x}", Price = x * 100, Stock = x + 50 });
+                });
+
+                identityDbContext.SaveChangesAsync().Wait();
             }
         }
     }
