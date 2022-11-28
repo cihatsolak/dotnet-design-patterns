@@ -5,15 +5,17 @@
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IUserObserverSubject _userObserverSubject;
-
+        private readonly IMediator _mediator;
         public AccountController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
-            IUserObserverSubject userObserverSubject)
+            IUserObserverSubject userObserverSubject,
+            IMediator mediator)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _userObserverSubject = userObserverSubject;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -61,7 +63,11 @@
 
             if (identityResult.Succeeded)
             {
-                _userObserverSubject.NotifyObservers(appUser);
+                await _mediator.Publish(new UserCreatedEvent()
+                {
+                    AppUser = appUser
+                });
+                //_userObserverSubject.NotifyObservers(appUser);
 
                 ViewBag.message = "Üyelik işlemi başarıyla gerçekleşti.";
             }
