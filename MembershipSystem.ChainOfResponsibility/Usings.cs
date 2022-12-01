@@ -1,0 +1,13 @@
+﻿global using ClosedXML.Excel;
+global using MembershipSystem;
+global using MembershipSystem.ChainOfResponsibility.Models;
+global using MembershipSystem.ChainOfResponsibilityModels;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using System.Data;
+global using System.IO.Compression;
+global using System.Net;
+global using System.Net.Mail;
+global using System.Net.Mime;
