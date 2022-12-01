@@ -42,6 +42,13 @@
                     Email = "user5@hotmail.com",
                 }, "Password12*").Wait();
             }
+
+            Enumerable.Range(1, 20).ToList().ForEach(x =>
+            {
+                identityDbContext.Products.Add(new Product { Name = $"Pencil {x}", Price = 100, Stock = 200 });
+            });
+
+            identityDbContext.SaveChanges();
         }
     }
 }

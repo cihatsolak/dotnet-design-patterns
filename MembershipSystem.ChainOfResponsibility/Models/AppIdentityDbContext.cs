@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
+﻿using MembershipSystem.ChainOfResponsibility.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace MembershipSystem.ChainOfResponsibilityModels
 {
@@ -7,6 +8,8 @@ namespace MembershipSystem.ChainOfResponsibilityModels
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Product> Products { get; set; }
 
         public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
         {
