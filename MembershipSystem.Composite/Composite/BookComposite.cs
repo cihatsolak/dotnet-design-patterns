@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 
 namespace MembershipSystem.Composite.Composite
 {
@@ -52,6 +53,23 @@ namespace MembershipSystem.Composite.Composite
             stringBuilder.Append("</ul>");
 
             return stringBuilder.ToString();
+        }
+
+        public List<SelectListItem> GetSelectListItems(string line)
+        {
+            var list = new List<SelectListItem> { new($"{line}{Name}", Id.ToString()) };
+
+            if (_components.Any(x => x is BookComposite))
+            { line += " - "; }
+
+            _components.ForEach(x =>
+            {
+                if (x is BookComposite bookComposite)
+                {
+                    list.AddRange(bookComposite.GetSelectListItems(line));
+                }
+            });
+            return list;
         }
     }
 }
