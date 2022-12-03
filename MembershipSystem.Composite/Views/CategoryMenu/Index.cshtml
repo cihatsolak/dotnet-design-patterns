@@ -4,6 +4,19 @@
     var menu = ViewBag.menu as BookComposite;
 }
 
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("ul").hide();
+            $(".menu").click(function (e) {
+                e.preventDefault();
+                $(this).parent().next().toggle();
+            })
+        })
+    </script>
+
+}
 <form asp-controller="CategoryMenu" asp-action="Index" method="post">
     <select name="categoryId" asp-items="ViewBag.selectList"></select>
     <input type="text" name="bookName" />
