@@ -34,9 +34,12 @@ namespace MembershipSystem.Composite.Composite
         public string Display()
         {
             StringBuilder stringBuilder = new();
-            stringBuilder.Append($"<div class='text-primary my-1'><a href='#' class='menu'>{Name} ({Count()}) </a></div>");
+            stringBuilder.Append("<div class='text-primary my-1'>");
+            stringBuilder.Append($"<a href='#' class='menu'>{Name} ({Count()}) </a>");
+            stringBuilder.Append("</div>");
 
-            if (!_components.Any()) return stringBuilder.ToString();
+            if (!_components.Any()) 
+                return stringBuilder.ToString();
 
             stringBuilder.Append("<ul class='list-group list-group-flush ms-3'>");
 
