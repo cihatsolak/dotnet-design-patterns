@@ -7,6 +7,6 @@
 
         public int ReferenceId { get; set; }
         public string UserId { get; set; }
-        public ICollection<Book> Books { get; set; }
+        public List<Book> Books { get; set; }
     }
 }
