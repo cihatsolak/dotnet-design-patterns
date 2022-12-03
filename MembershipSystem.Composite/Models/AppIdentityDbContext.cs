@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
+﻿using MembershipSystem.Composite.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace MembershipSystem.Models
 {
@@ -7,6 +8,9 @@ namespace MembershipSystem.Models
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
         {
