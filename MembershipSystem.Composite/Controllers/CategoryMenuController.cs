@@ -29,6 +29,15 @@ namespace MembershipSystem.Composite.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(int categoryId, string bookName)
+        {
+            await _context.Books.AddAsync(new Book { CategoryId = categoryId, Name = bookName });
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public BookComposite GetMenus(List<Category> categories, Category topCategory, BookComposite topBookComposite, BookComposite lastBookComposite = null)
         {
             var categoriesByReferance = categories.Where(x => x.ReferenceId == topCategory.Id);
