@@ -1,9 +1,11 @@
 ﻿using MembershipSystem.Composite.Composite;
 using MembershipSystem.Composite.Models;
+using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 namespace MembershipSystem.Composite.Controllers
 {
+    [Authorize]
     public class CategoryMenuController : Controller
     {
         private readonly AppIdentityDbContext _context;
@@ -21,6 +23,8 @@ namespace MembershipSystem.Composite.Controllers
             var userId = User.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
             var categories = await _context.Categories.Include(x => x.Books).Where(x => x.UserId == userId).OrderBy(x => x.Id).ToListAsync();
             var menu = GetMenus(categories, new Category { Name = "TopCategory", Id = 0 }, new BookComposite(0, "TopMenu"));
+
+            ViewBag.Menu = menu;
 
             return View();
         }

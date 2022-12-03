@@ -6,6 +6,7 @@ namespace MembershipSystem.Composite.Composite
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public IReadOnlyCollection<IComponent> Components => _components;
 
         private readonly List<IComponent> _components;
 
