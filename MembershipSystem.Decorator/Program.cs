@@ -1,3 +1,5 @@
+using MembershipSystem.Decorator.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -11,6 +13,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<AppIdentityDbContext>();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 SeedData.AddSeedData(builder);
 
