@@ -1,6 +1,4 @@
-using MembershipSystem.Decorator.Repositories;
-using MembershipSystem.Decorator.Repositories.Decorators;
-using Microsoft.Extensions.Caching.Memory;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,18 +14,24 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddMemoryCache();
-builder.Services.AddScoped<IProductRepository>(provider =>
-{
-    var context = provider.GetRequiredService<AppIdentityDbContext>();
-    var memoryCache = provider.GetRequiredService<IMemoryCache>();
-    var logService = provider.GetRequiredService<ILogger<ProductRepositoryLoggingDecorator>>();
-    var productRepository = new ProductRepository(context);
 
-    var cacheDecorator = new ProductRepositoryCacheDecorator(productRepository, memoryCache);
-    var logDecorator = new ProductRepositoryLoggingDecorator(cacheDecorator, logService);
+//builder.Services.AddScoped<IProductRepository>(provider =>
+//{
+//    var context = provider.GetRequiredService<AppIdentityDbContext>();
+//    var memoryCache = provider.GetRequiredService<IMemoryCache>();
+//    var logService = provider.GetRequiredService<ILogger<ProductRepositoryLoggingDecorator>>();
+//    var productRepository = new ProductRepository(context);
 
-    return logDecorator;
-});
+//    var cacheDecorator = new ProductRepositoryCacheDecorator(productRepository, memoryCache);
+//    var logDecorator = new ProductRepositoryLoggingDecorator(cacheDecorator, logService);
+
+//    return logDecorator;
+//});
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .Decorate<IProductRepository, ProductRepositoryCacheDecorator>()
+    .Decorate<IProductRepository, ProductRepositoryLoggingDecorator>();
+
 
 SeedData.AddSeedData(builder);
 
