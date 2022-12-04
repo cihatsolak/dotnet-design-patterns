@@ -20,9 +20,13 @@ builder.Services.AddScoped<IProductRepository>(provider =>
 {
     var context = provider.GetRequiredService<AppIdentityDbContext>();
     var memoryCache = provider.GetRequiredService<IMemoryCache>();
+    var logService = provider.GetRequiredService<ILogger<ProductRepositoryLoggingDecorator>>();
     var productRepository = new ProductRepository(context);
 
-    return new ProductRepositoryCacheDecorator(productRepository, memoryCache);
+    var cacheDecorator = new ProductRepositoryCacheDecorator(productRepository, memoryCache);
+    var logDecorator = new ProductRepositoryLoggingDecorator(cacheDecorator, logService);
+
+    return logDecorator;
 });
 
 SeedData.AddSeedData(builder);
