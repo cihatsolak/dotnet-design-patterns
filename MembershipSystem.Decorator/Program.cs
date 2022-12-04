@@ -15,6 +15,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddMemoryCache();
 
+// technique 1 
 //builder.Services.AddScoped<IProductRepository>(provider =>
 //{
 //    var context = provider.GetRequiredService<AppIdentityDbContext>();
@@ -28,10 +29,32 @@ builder.Services.AddMemoryCache();
 //    return logDecorator;
 //});
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>()
-    .Decorate<IProductRepository, ProductRepositoryCacheDecorator>()
-    .Decorate<IProductRepository, ProductRepositoryLoggingDecorator>();
+// technique 2
+//builder.Services.AddScoped<IProductRepository, ProductRepository>()
+//    .Decorate<IProductRepository, ProductRepositoryCacheDecorator>()
+//    .Decorate<IProductRepository, ProductRepositoryLoggingDecorator>();
 
+
+// technique 3
+builder.Services.AddScoped<IProductRepository>(sp =>
+{
+    var httpContextAccessor = sp.GetRequiredService<IHttpContextAccessor>();
+
+    var context = sp.GetRequiredService<AppIdentityDbContext>();
+    var memoryCache = sp.GetRequiredService<IMemoryCache>();
+    var productRepository = new ProductRepository(context);
+    var logService = sp.GetRequiredService<ILogger<ProductRepositoryLoggingDecorator>>();
+
+    if (httpContextAccessor.HttpContext.User.Identity.Name == "user1")
+    {
+        var cacheDecorator = new ProductRepositoryCacheDecorator(productRepository, memoryCache);
+        return cacheDecorator;
+    }
+
+    var logDecorator = new ProductRepositoryLoggingDecorator(productRepository, logService);
+
+    return logDecorator;
+});
 
 SeedData.AddSeedData(builder);
 
