@@ -1,4 +1,6 @@
 using MembershipSystem.Decorator.Repositories;
+using MembershipSystem.Decorator.Repositories.Decorators;
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,15 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 }).AddEntityFrameworkStores<AppIdentityDbContext>();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddMemoryCache();
+builder.Services.AddScoped<IProductRepository>(provider =>
+{
+    var context = provider.GetRequiredService<AppIdentityDbContext>();
+    var memoryCache = provider.GetRequiredService<IMemoryCache>();
+    var productRepository = new ProductRepository(context);
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+    return new ProductRepositoryCacheDecorator(productRepository, memoryCache);
+});
 
 SeedData.AddSeedData(builder);
 
@@ -28,6 +37,18 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.Use(async (a, b) =>
+{
+    try
+    {
+        await b();
+    }
+    catch (Exception ex)
+    {
+
+    }
+});
 
 app.UseRouting();
 

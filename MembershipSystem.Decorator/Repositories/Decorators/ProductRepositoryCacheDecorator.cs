@@ -4,13 +4,11 @@ namespace MembershipSystem.Decorator.Repositories.Decorators
 {
     public class ProductRepositoryCacheDecorator : BaseProductRepositoryDecorator
     {
-        private const string ProductsCacheName = "products";
-
         private readonly IMemoryCache _memoryCache;
 
-        public ProductRepositoryCacheDecorator(
-            IProductRepository productRepository,
-            IMemoryCache memoryCache) : base(productRepository)
+        private const string ProductsCacheName = "products";
+
+        public ProductRepositoryCacheDecorator(IProductRepository productRepository, IMemoryCache memoryCache) : base(productRepository)
         {
             _memoryCache = memoryCache;
         }
@@ -21,7 +19,6 @@ namespace MembershipSystem.Decorator.Repositories.Decorators
             {
                 return cacheProducts;
             }
-
             await UpdateCache();
 
             return _memoryCache.Get<List<Product>>(ProductsCacheName);
@@ -29,7 +26,8 @@ namespace MembershipSystem.Decorator.Repositories.Decorators
 
         public async override Task<List<Product>> GetAll(string userId)
         {
-            return await GetAll(userId);
+            var products = await GetAll();
+            return products.Where(x => x.UserId == userId).ToList();
         }
 
         public async override Task<Product> Save(Product product)
