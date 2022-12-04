@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Design;
 
-namespace MembershipSystem.Models
+namespace MembershipSystem.Decorator.Models
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Product> Products { get; set; }
 
         public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
         {

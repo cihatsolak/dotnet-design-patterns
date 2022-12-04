@@ -1,4 +1,4 @@
-﻿namespace MembershipSystem.Controllers
+﻿namespace MembershipSystem.Decorator.Controllers
 {
     public class AccountController : Controller
     {

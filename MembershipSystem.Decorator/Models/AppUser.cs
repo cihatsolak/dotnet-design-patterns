@@ -1,4 +1,4 @@
-﻿namespace MembershipSystem.Models
+﻿namespace MembershipSystem.Decorator.Models
 {
     public class AppUser : IdentityUser
     {
