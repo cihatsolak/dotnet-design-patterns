@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Composite"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Decorator", "MembershipSystem.Decorator\MembershipSystem.Decorator.csproj", "{44A76EB3-DBB5-4CE3-8386-C88A5F130B58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MembershipSystem.Adapter", "MembershipSystem.Adapter\MembershipSystem.Adapter.csproj", "{24E8F503-B495-4B21-9D99-6A924F86268C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{44A76EB3-DBB5-4CE3-8386-C88A5F130B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44A76EB3-DBB5-4CE3-8386-C88A5F130B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44A76EB3-DBB5-4CE3-8386-C88A5F130B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E8F503-B495-4B21-9D99-6A924F86268C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E8F503-B495-4B21-9D99-6A924F86268C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E8F503-B495-4B21-9D99-6A924F86268C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E8F503-B495-4B21-9D99-6A924F86268C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
