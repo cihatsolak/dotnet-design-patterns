@@ -1,5 +1,3 @@
-using MembershipSystem.Adapter.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -7,7 +5,10 @@ builder.Services.AddDbContext<AppIdentityDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddScoped<IImageProcess, ImageProcess>();
+//builder.Services.AddScoped<IImageProcess, ImageProcess>();
+
+builder.Services.AddScoped<IAdvanceImageProcess, AdvanceImageProcess>();
+builder.Services.AddScoped<IImageProcess, AdvanceImageProcessAdapter>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
