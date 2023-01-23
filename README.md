@@ -31,3 +31,8 @@ The adapter pattern is a software design pattern (also known as wrapper, an alte
 ### :green_circle: Decorator Design Pattern
 
 The decorator pattern is a design pattern that allows behavior to be added to an individual object, dynamically, without affecting the behavior of other objects from the same class
+
+#### Contact Addresses
+##### Linkedin: [Send a message on Linkedin](https://www.linkedin.com/in/cihatsolak/)
+##### Twitter: [Go to @cihattsolak](https://twitter.com/cihattsolak)
+##### Medium: [Read from medium](https://cihatsolak.medium.com/)
